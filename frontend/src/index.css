@@ -65,6 +65,12 @@ a {
   align-items: center;
   padding-left: 10vw;
 }
+
+.image {
+  width: 32vw;
+  fill: ;
+}
+
 /* error page */
 .error-page {
   height: 100vh;
