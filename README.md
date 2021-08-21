@@ -4,9 +4,28 @@ As our climate change worsens we'll see many changes to our world, but what will
 
 
 
+## About
+
+A React-Flask app that visualizes the changes in climate over time for a given area. Explore the area in 3D and found out how it can affect you!
+
+
+
 ## 📸 Demo/Screenshots
 
 
+
+
+
+## 🔨 Tools
+
+* Flask-SQLite (Backend REST API)
+* React-Typescript (Front end)
+
+### Dependencies
+
+* create-react-app
+* rsuite
+* react-router-dom
 
 
 

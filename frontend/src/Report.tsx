@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Slider } from "rsuite";
+import "rsuite/dist/styles/rsuite-default.css";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
 import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
@@ -10,6 +12,7 @@ export const Report: React.FC = () => {
   const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
+  const [sliderValue, setSliderValue] = useState(2020);
 
   useEffect(() => {
     document.title = "Climate Report | Report";
@@ -19,21 +22,95 @@ export const Report: React.FC = () => {
     // TODO: get the right data type to display
   }, [showType]);
 
+  const decrease = () => {
+    // check bounds
+    if (sliderValue - 1 > 1950) setSliderValue(sliderValue - 1);
+  };
+  const increase = () => {
+    // check bounds
+    if (sliderValue + 1 < 2050) setSliderValue(sliderValue + 1);
+  };
+
   return (
     <>
       <div>
         <Navbar />
       </div>
       <div className="reportPage">
-        <div className="searchBar" style={{ top: `100px`, flex: 3.5 }}>
-          {/* search bar */}
-          <input
-            type="text"
-            placeholder="City/Place"
-            value={searchField}
-            onChange={(e) => changeSearchField(e.target.value)}
-          />
+        <div className="searchBar" style={{ flex: 3.5 }}>
+          <div style={{ top: `100px`, flex: 1 }}>
+            {/* search bar */}
+            <input
+              type="text"
+              placeholder="City/Place"
+              value={searchField}
+              onChange={(e) => changeSearchField(e.target.value)}
+            />
+          </div>
           {/* timeline */}
+          <div
+            style={{
+              top: `100px`,
+              flex: 1,
+              display: "grid",
+            }}
+          >
+            <div
+              className="slider"
+              style={{
+                padding: "36px",
+                paddingLeft: "48px",
+                paddingRight: "48px",
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+                marginTop: "auto",
+                display: "grid",
+              }}
+            >
+              {/* TODO: arrow buttons */}
+              <TriangleClose
+                title="Decrease Year"
+                style={{
+                  marginRight: "20px",
+                  filter: "brightness(0) invert(1)",
+                }}
+                onClick={decrease}
+              />
+              <div />
+              <div>
+                <Slider
+                  defaultValue={2020}
+                  step={1}
+                  graduated
+                  progress
+                  min={1950}
+                  max={2050}
+                  value={sliderValue}
+                  onChange={(e) => {
+                    setSliderValue(e);
+                  }}
+                  renderMark={(mark) => {
+                    const times = [];
+                    for (let i = 1950; i < 2051; i += 10) {
+                      times.push(i);
+                    }
+                    if (times.includes(mark)) {
+                      return <span>{mark}</span>;
+                    }
+                    return null;
+                  }}
+                />
+              </div>
+              <div />
+              <TriangleOpen
+                title="Increase Year"
+                style={{
+                  marginLeft: "20px",
+                  filter: "brightness(0) invert(1)",
+                }}
+                onClick={increase}
+              />
+            </div>
+          </div>
         </div>
         <div
           className={`sidebar transition ${
@@ -44,14 +121,14 @@ export const Report: React.FC = () => {
             {toggleSidebar ? (
               <TriangleOpen
                 title="Close Options"
+                style={{
+                  marginRight: "20px",
+                }}
                 onClick={() => toggleToggleSidebar(!toggleSidebar)}
               />
             ) : (
               <TriangleClose
                 title="Open Options"
-                style={{
-                  paddingLeft: "10px",
-                }}
                 onClick={() => toggleToggleSidebar(!toggleSidebar)}
               />
             )}
@@ -85,12 +162,15 @@ export const Report: React.FC = () => {
                 Precipitation
               </label>
               <br />
-              <label>
-                <input type="radio" id="none" name="toggle" value="none" /> None
-              </label>
-              <br />
               <label title="None">
-                <input type="radio" id="none" name="toggle" value="none" /> None
+                <input
+                  type="radio"
+                  id="none"
+                  name="toggle"
+                  value="none"
+                  checked
+                />{" "}
+                None
               </label>
             </div>
           </div>
