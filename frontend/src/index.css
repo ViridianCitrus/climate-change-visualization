@@ -62,7 +62,9 @@ a {
   display: flex;
   align-items: center;
   padding-left: 10vw;
+  background-color: #a4a6bc;
 }
+
 .overlay div h1,
 .overlay div > p {
   color: #404572;
@@ -159,6 +161,7 @@ a {
 .rs-slider-graduator span {
   color: white;
 }
+
 /* error page */
 .error-page {
   height: 100vh;
