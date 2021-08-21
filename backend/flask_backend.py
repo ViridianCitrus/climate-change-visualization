@@ -1,15 +1,8 @@
 import os
-from flask import Flask, jsonify
-from flask_sqlalchemy import SQLAlchemy
-
-BACKEND_PATH = os.path.dirname(os.path.realpath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(BACKEND_PATH, '..'))
-DATABASE_PATH = os.path.join(PROJECT_ROOT, 'data')
-DATABASE = os.path.join(DATABASE_PATH, 'climate_data.db')
+import sqlite3
+from flask import Flask, request
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////" + DATABASE
-db = SQLAlchemy(app)
 
 
 # TODO: Change routes as needed to match front end
@@ -19,6 +12,22 @@ def loc_return(city):
     Return a .json of the given city's climate data upon request
     """
     return jsonify()
+
+
+@app.route("/api/region")
+def station_return():
+    """
+    Return a .json of the given station's climate data upon request
+    """
+    sid = request.args['sid']
+    db = sqlite3.connect('climatedata.db')
+    cur = db.cursor()
+    data = cur.execute('SELECT * FROM CLIMATE_DATA WHERE station_id = ?;', (sid,))
+    output = dict()
+    for line in data:
+        output[line[5]] = line[6]
+    cur.close()
+    return output
 
 
 if __name__ == '__main__':
