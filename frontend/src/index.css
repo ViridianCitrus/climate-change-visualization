@@ -150,6 +150,12 @@ a {
   display: flex;
   flex-direction: column;
 }
+.slider {
+  grid-template-columns: 5% 5% 80% 5% 5%;
+}
+.slider > svg {
+  z-index: 100;
+}
 .rs-slider-graduator span {
   color: white;
 }

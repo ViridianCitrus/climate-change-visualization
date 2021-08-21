@@ -21,6 +21,15 @@ export const Report: React.FC = () => {
     // TODO: get the right data type to display
   }, [showType]);
 
+  const decrease = () => {
+    // check bounds
+    if (sliderValue - 1 > 1950) setSliderValue(sliderValue - 1);
+  };
+  const increase = () => {
+    // check bounds
+    if (sliderValue + 1 < 2050) setSliderValue(sliderValue + 1);
+  };
+
   return (
     <>
       <div>
@@ -53,30 +62,51 @@ export const Report: React.FC = () => {
                 paddingRight: "48px",
                 backgroundColor: "rgba(0, 0, 0, 0.4)",
                 marginTop: "auto",
+                display: "grid",
               }}
             >
               {/* TODO: arrow buttons */}
-              <Slider
-                defaultValue={2020}
-                step={1}
-                graduated
-                progress
-                min={1950}
-                max={2050}
-                value={sliderValue}
-                onChange={(e) => {
-                  setSliderValue(e);
+              <TriangleClose
+                title="Decrease Year"
+                style={{
+                  marginRight: "20px",
+                  filter: "brightness(0) invert(1)",
                 }}
-                renderMark={(mark) => {
-                  const times = [];
-                  for (let i = 1950; i < 2051; i += 10) {
-                    times.push(i);
-                  }
-                  if (times.includes(mark)) {
-                    return <span>{mark}</span>;
-                  }
-                  return null;
+                onClick={decrease}
+              />
+              <div />
+              <div>
+                <Slider
+                  defaultValue={2020}
+                  step={1}
+                  graduated
+                  progress
+                  min={1950}
+                  max={2050}
+                  value={sliderValue}
+                  onChange={(e) => {
+                    setSliderValue(e);
+                  }}
+                  renderMark={(mark) => {
+                    const times = [];
+                    for (let i = 1950; i < 2051; i += 10) {
+                      times.push(i);
+                    }
+                    if (times.includes(mark)) {
+                      return <span>{mark}</span>;
+                    }
+                    return null;
+                  }}
+                />
+              </div>
+              <div />
+              <TriangleOpen
+                title="Increase Year"
+                style={{
+                  marginLeft: "20px",
+                  filter: "brightness(0) invert(1)",
                 }}
+                onClick={increase}
               />
             </div>
           </div>
@@ -131,12 +161,15 @@ export const Report: React.FC = () => {
                 Precipitation
               </label>
               <br />
-              <label>
-                <input type="radio" id="none" name="toggle" value="none" /> None
-              </label>
-              <br />
               <label title="None">
-                <input type="radio" id="none" name="toggle" value="none" /> None
+                <input
+                  type="radio"
+                  id="none"
+                  name="toggle"
+                  value="none"
+                  checked
+                />{" "}
+                None
               </label>
             </div>
           </div>
