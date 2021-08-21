@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Slider } from "rsuite";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
 import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
@@ -10,6 +11,7 @@ export const Report: React.FC = () => {
   const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
+  const [sliderValue, setSliderValue] = useState(2020);
 
   useEffect(() => {
     document.title = "Climate Report | Report";
@@ -34,6 +36,32 @@ export const Report: React.FC = () => {
             onChange={(e) => changeSearchField(e.target.value)}
           />
           {/* timeline */}
+          <div
+            style={{ padding: "36px", backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+          >
+            <Slider
+              defaultValue={2020}
+              step={1}
+              graduated
+              progress
+              min={1950}
+              max={2050}
+              value={sliderValue}
+              onChange={(e) => {
+                setSliderValue(e);
+              }}
+              renderMark={(mark) => {
+                const times = [];
+                for (let i = 1950; i < 2051; i += 10) {
+                  times.push(i);
+                }
+                if (times.includes(mark)) {
+                  return <span>{mark}</span>;
+                }
+                return null;
+              }}
+            />
+          </div>
         </div>
         <div
           className={`sidebar transition ${

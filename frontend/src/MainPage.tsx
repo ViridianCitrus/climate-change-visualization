@@ -29,7 +29,7 @@ export const MainPage: React.FC = () => {
           <FrontPageImage />
         </div>
       </div>
-      <div className="about">
+      <div className="about" id="about">
         <h2 style={{ fontWeight: "normal", fontSize: "36px" }}>About</h2>
         <p style={{ fontSize: "32px", maxWidth: "960px", lineHeight: 1.4 }}>
           As our <b>climate change</b> worsens we'll see many changes to our

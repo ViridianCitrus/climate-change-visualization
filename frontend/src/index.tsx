@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import { Routes } from "./Routes";
 import "./index.css";
+import "rsuite/dist/styles/rsuite-default.css";
 
 ReactDOM.render(
   <React.StrictMode>
