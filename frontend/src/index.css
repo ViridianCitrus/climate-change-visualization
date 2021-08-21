@@ -92,6 +92,15 @@ a {
   font-size: 20px;
   margin: 0;
 }
+/* about */
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+  color: #404572;
+}
 /* report page */
 .reportPage {
   display: flex;

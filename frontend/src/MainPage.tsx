@@ -29,6 +29,18 @@ export const MainPage: React.FC = () => {
           <FrontPageImage />
         </div>
       </div>
+      <div className="about">
+        <h2 style={{ fontWeight: "normal", fontSize: "36px" }}>About</h2>
+        <p style={{ fontSize: "32px", maxWidth: "960px", lineHeight: 1.4 }}>
+          As our <b>climate change</b> worsens we'll see many changes to our
+          world, but what will it look like where you live?
+          <br />
+          <br /> How will it affect your friend from Vancouver?
+          <br />
+          <br /> This website allows you to explore the effects of climate
+          change around the world in 3D!{" "}
+        </p>
+      </div>
     </>
   );
 };
