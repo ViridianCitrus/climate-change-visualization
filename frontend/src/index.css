@@ -106,6 +106,7 @@ a {
 .about div h1,
 .about div > p {
   color: #404572;
+  padding-top: 30px;
 }
 
 .about div > h1 {
@@ -117,10 +118,10 @@ a {
   margin: 0;
 }
 
-.quote { 
-  padding-top: 30px;
-  padding-bottom: 15px;
-  font: italic;
+.author {
+  font-style: italic;
+  font-size: 18px;
+  padding-top: 5px;
 }
 
 /* report page */
