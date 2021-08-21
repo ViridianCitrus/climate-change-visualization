@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Navbar } from "./Navbar";
 
 export const Report: React.FC = () => {
   useEffect(() => {
@@ -7,6 +8,7 @@ export const Report: React.FC = () => {
 
   return (
     <>
+      <Navbar />
       <p>Report</p>
     </>
   );
