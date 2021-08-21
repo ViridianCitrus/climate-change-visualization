@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
 import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
 import { Navbar } from "./Navbar";
 
 export const Report: React.FC = () => {
-  const [offsetHeight, setOffsetHeight] = useState(100);
-  const [sidebarOffset, setSidebarOffset] = useState(0);
+  // const [offsetHeight, setOffsetHeight] = useState(100);
+  // const [sidebarOffset, setSidebarOffset] = useState(0);
   const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
@@ -25,10 +25,7 @@ export const Report: React.FC = () => {
         <Navbar />
       </div>
       <div className="reportPage">
-        <div
-          className="searchBar"
-          style={{ top: `${offsetHeight}px`, flex: 3.5 }}
-        >
+        <div className="searchBar" style={{ top: `100px`, flex: 3.5 }}>
           {/* search bar */}
           <input
             type="text"
