@@ -92,6 +92,54 @@ a {
   font-size: 20px;
   margin: 0;
 }
+/* report page */
+.reportPage {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+.sidebar {
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebarOpen {
+  flex: 0.8;
+}
+.sidebarClosed {
+  flex: 0.2;
+}
+.sidebar svg {
+  padding-right: 20px;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+.sidebar svg:hover {
+  filter: brightness(1.4);
+}
+.sidebar .sidebarClose svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.sidebar h2,
+.sidebar label {
+  color: #404572;
+}
+.sidebar h2 {
+  font-size: 32px;
+}
+.sidebar label {
+  font-size: 24px;
+}
+.searchBar {
+  margin-top: 100px;
+}
 /* error page */
 .error-page {
   height: 100vh;
