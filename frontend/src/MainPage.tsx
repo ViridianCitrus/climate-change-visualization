@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+
+import { ReactComponent as FrontPageImage } from "./images/frontpage.svg";
 import { Navbar } from "./Navbar";
 
 export const MainPage: React.FC = () => {
@@ -21,6 +23,9 @@ export const MainPage: React.FC = () => {
               <p>Get Report</p>
             </button>
           </a>
+        </div>
+        <div style={{ paddingLeft: "20vw", paddingTop: "15vh" }}>
+          <FrontPageImage />
         </div>
       </div>
     </>

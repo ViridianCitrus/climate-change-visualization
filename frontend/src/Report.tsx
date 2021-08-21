@@ -7,12 +7,17 @@ import { Navbar } from "./Navbar";
 export const Report: React.FC = () => {
   const [offsetHeight, setOffsetHeight] = useState(100);
   const [sidebarOffset, setSidebarOffset] = useState(0);
+  const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
 
   useEffect(() => {
     document.title = "Climate Report | Report";
   }, []);
+
+  useEffect(() => {
+    // TODO: get the right data type to display
+  }, [showType]);
 
   return (
     <>
@@ -59,7 +64,10 @@ export const Report: React.FC = () => {
             style={{ display: toggleSidebar ? "initial" : "none" }}
           >
             <h2>Toggles</h2>
-            <div>
+            <div
+              className="toggleRadio"
+              onChange={(e: any) => changeShowType(e.target.value)}
+            >
               <label title="Temperature">
                 <input
                   type="radio"
