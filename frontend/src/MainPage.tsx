@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 export const MainPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Climate Report | Report";
+    document.title = "Climate Report | Main";
   }, []);
 
   return (
