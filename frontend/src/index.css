@@ -67,7 +67,7 @@ a {
 
 .overlay div h1,
 .overlay div > p {
-  color: #404572;
+  color: white;
 }
 .overlay div h1 {
   font-size: 64px;
@@ -78,7 +78,7 @@ a {
 .overlay div button {
   background-color: #5d87f3;
   border: none;
-  padding: 30px;
+  padding: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
   color: white;
@@ -101,6 +101,32 @@ a {
   justify-content: center;
   padding-left: 10vw;
   color: #404572;
+}
+.about h2,
+.why h2 {
+  font-weight: normal;
+  padding-left: 8vw;
+  padding-bottom: 20px;
+  font-size: 36px;
+}
+.about p,
+.why p {
+  font-weight: normal;
+  padding-left: 8vw;
+  max-width: 920px;
+  font-size: 28px;
+}
+.why {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+  color: white;
+  background-color: #404572;
+}
+.author {
+  text-align: right;
 }
 /* report page */
 .reportPage {
