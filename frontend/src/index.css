@@ -56,6 +56,15 @@ a {
   filter: brightness(130%);
 }
 /* end navbar */
+/* home page */
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 10vw;
+}
 /* error page */
 .error-page {
   height: 100vh;
