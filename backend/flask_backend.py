@@ -1,4 +1,5 @@
 import os
+import sys
 import sqlite3
 import math
 from flask import Flask, request
@@ -19,13 +20,8 @@ def euclidean_distance(lat1, lat2, lon1, lon2):
     return math.sqrt(lat_comp + lon_comp)
 
 
-# TODO: Change routes as needed to match front end
-@app.route("/api/region")
-def station_return():
-    """
-    Returns given station's climate data
-    """
-    sid = request.args['sid']
+def get_station_data(station_id):
+    sid = station_id
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
     data = cur.execute('SELECT * FROM CLIMATE_DATA WHERE station_id = ?;', (sid,))
@@ -34,6 +30,19 @@ def station_return():
         output[line[5]] = line[6]
     cur.close()
     return output
+
+
+@app.route("/api/region")
+def station_return():
+    """
+    Returns given station's climate data
+    """
+    sid = request.args['sid']
+    climate_data = get_station_data(sid)
+    return climate_data
+
+
+
 
 @app.route("/api/region/local")
 def local_return():
@@ -53,11 +62,26 @@ def local_return():
     station_ids = list()
     count = 0
     while count <= num:
-        id =
-        for line in data:
-            pos = (line[0], line[1])
+        id = 0
+        skipped = False
+        min_dist = sys.float_info.max
 
-            output[line[5]] = line[6]
+        for line in data:
+            if line[4] not in station_ids:
+                skipped = False
+                pos = (line[0], line[1])
+                distance = euclidean_distance(pos[0], pos[1], sel_pos[0], sel_pos[1])
+
+                if distance < min_dist:
+                    min_dist = distance
+                    id = line[4]
+            else:
+                skipped = True
+
+        if skipped is False:
+            station_ids.append(id)
+            count += 1
+
     cur.close()
     return output
 
