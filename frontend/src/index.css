@@ -57,6 +57,9 @@ a {
 }
 /* end navbar */
 /* home page */
+.home {
+  background-color: #A4A6BC;
+}
 
 .overlay {
   width: 100vw;
@@ -64,11 +67,6 @@ a {
   display: flex;
   align-items: center;
   padding-left: 10vw;
-}
-
-.image {
-  width: 32vw;
-  fill: ;
 }
 
 /* error page */

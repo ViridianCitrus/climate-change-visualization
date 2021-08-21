@@ -14,7 +14,7 @@ export const MainPage: React.FC = () => {
         <div>
           <h1>Climate Report</h1>
           <p>See the change to our world</p>
-          <button style={{ marginRight: "50px", marginTop: "50px" }}>
+          <button style={{ marginRight: "50px", marginTop: "50px" }} className="start-button">
             <p>Let's get started</p>
           </button>
         </div>
