@@ -33,9 +33,9 @@ export const MainPage: React.FC = () => {
       <div className="about">
         <div>
           <h1>About</h1>
-          <p>As our climate change worsens we'll see many changes to our world, but what will it look like where you live? How will it affect your friend from France? This website allows you to explore the effects of climate change around the world in 3D! </p>
-          <p>We cannot burn our way to the future. We cannot pretend the danger does not exist — or dismiss it because it affects someone else. </p>
-          <p>- Ban Ki-moon</p>
+            <p>As our climate change worsens we'll see many changes to our world, but what will it look like where you live? How will it affect your friend from France? This website allows you to explore the effects of climate change around the world in 3D! </p>
+            <p className="quote">"We cannot burn our way to the future. We cannot pretend the danger does not exist — or dismiss it because it affects someone else."</p>
+            <p>- Ban Ki-moon</p>
         </div>
       </div>
     </>
