@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Slider } from "rsuite";
+import "rsuite/dist/styles/rsuite-default.css";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
 import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";

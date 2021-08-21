@@ -15,7 +15,7 @@ export const MainPage: React.FC = () => {
         <div>
           <h1>Climate Report</h1>
 
-          <p>See the change to your world</p>
+          <p style={{ marginTop: "36px" }}>See the change to your world</p>
           <a href="/report">
             <button
               style={{ marginRight: "50px", marginTop: "50px" }}
