@@ -1,6 +1,6 @@
 import sqlite3
 import pandas as pd
-
+import numpy as np
 
 def main():
     db = sqlite3.connect('climatedata.db')
@@ -14,7 +14,7 @@ def main():
         province TEXT NOT NULL,
         station_name TEXT,
         year INTEGER NOT NULL,
-        mean_temp REAL NOT NULL
+        mean_temp REAL
     );
     '''
     cur.execute(schema)
@@ -36,6 +36,8 @@ def main():
                 ?
             );
             '''
+
+        temp = None if row['mean_temp'] == np.nan else row['mean_temp']
         cur.execute(sql, (row['latitude'], row['longitude'], row['province'], row['station_name'], row['year'],
                     row['mean_temp'], ))
     db.commit()
