@@ -121,7 +121,6 @@ a {
   flex: 0.2;
 }
 .sidebar svg {
-  padding-right: 20px;
   transition: 0.2s;
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s;
@@ -148,6 +147,11 @@ a {
 }
 .searchBar {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.rs-slider-graduator span {
+  color: white;
 }
 /* error page */
 .error-page {

@@ -27,40 +27,58 @@ export const Report: React.FC = () => {
         <Navbar />
       </div>
       <div className="reportPage">
-        <div className="searchBar" style={{ top: `100px`, flex: 3.5 }}>
-          {/* search bar */}
-          <input
-            type="text"
-            placeholder="City/Place"
-            value={searchField}
-            onChange={(e) => changeSearchField(e.target.value)}
-          />
+        <div className="searchBar" style={{ flex: 3.5 }}>
+          <div style={{ top: `100px`, flex: 1 }}>
+            {/* search bar */}
+            <input
+              type="text"
+              placeholder="City/Place"
+              value={searchField}
+              onChange={(e) => changeSearchField(e.target.value)}
+            />
+          </div>
           {/* timeline */}
           <div
-            style={{ padding: "36px", backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+            style={{
+              top: `100px`,
+              flex: 1,
+              display: "grid",
+            }}
           >
-            <Slider
-              defaultValue={2020}
-              step={1}
-              graduated
-              progress
-              min={1950}
-              max={2050}
-              value={sliderValue}
-              onChange={(e) => {
-                setSliderValue(e);
+            <div
+              className="slider"
+              style={{
+                padding: "36px",
+                paddingLeft: "48px",
+                paddingRight: "48px",
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+                marginTop: "auto",
               }}
-              renderMark={(mark) => {
-                const times = [];
-                for (let i = 1950; i < 2051; i += 10) {
-                  times.push(i);
-                }
-                if (times.includes(mark)) {
-                  return <span>{mark}</span>;
-                }
-                return null;
-              }}
-            />
+            >
+              {/* TODO: arrow buttons */}
+              <Slider
+                defaultValue={2020}
+                step={1}
+                graduated
+                progress
+                min={1950}
+                max={2050}
+                value={sliderValue}
+                onChange={(e) => {
+                  setSliderValue(e);
+                }}
+                renderMark={(mark) => {
+                  const times = [];
+                  for (let i = 1950; i < 2051; i += 10) {
+                    times.push(i);
+                  }
+                  if (times.includes(mark)) {
+                    return <span>{mark}</span>;
+                  }
+                  return null;
+                }}
+              />
+            </div>
           </div>
         </div>
         <div
@@ -72,14 +90,14 @@ export const Report: React.FC = () => {
             {toggleSidebar ? (
               <TriangleOpen
                 title="Close Options"
+                style={{
+                  marginRight: "20px",
+                }}
                 onClick={() => toggleToggleSidebar(!toggleSidebar)}
               />
             ) : (
               <TriangleClose
                 title="Open Options"
-                style={{
-                  paddingLeft: "10px",
-                }}
                 onClick={() => toggleToggleSidebar(!toggleSidebar)}
               />
             )}
