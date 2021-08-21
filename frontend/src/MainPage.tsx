@@ -19,6 +19,7 @@ export const MainPage: React.FC = () => {
             <button
               style={{ marginRight: "50px", marginTop: "50px" }}
               className="transition"
+              title="Get Report"
             >
               <p>Get Report</p>
             </button>
