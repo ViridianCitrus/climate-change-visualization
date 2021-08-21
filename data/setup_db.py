@@ -14,24 +14,20 @@ def main():
         province TEXT NOT NULL,
         station_name TEXT,
         year INTEGER NOT NULL,
-        month INTEGER NOT NuLL,
-        mean_temp REAL NOT NULL,
-        total_precip REAL
+        mean_temp REAL NOT NULL
     );
     '''
     cur.execute(schema)
 
-    df = pd.read_csv('1950_2021_cleaned.csv')
+    df = pd.read_csv('ahccd-annual-cleaned.csv')
     rows = df.shape[0]
     for index, row in df.iterrows():
         if index % 1000 == 0:
             print(f'{index/rows*100:.1f}% uploaded.', end='\r')
         sql = \
             '''
-            INSERT INTO CLIMATE_DATA (latitude, longitude, province, station_name, year, month, mean_temp, total_precip)
+            INSERT INTO CLIMATE_DATA (latitude, longitude, province, station_name, year, mean_temp)
             VALUES (
-                ?,
-                ?,
                 ?,
                 ?,
                 ?,
@@ -40,8 +36,8 @@ def main():
                 ?
             );
             '''
-        cur.execute(sql, (row['LATITUDE'], row['LONGITUDE'], row['PROVINCE_CODE'], row['STATION_NAME'], row['LOCAL_YEAR'],
-                    row['LOCAL_MONTH'], row['MEAN_TEMPERATURE'], row['TOTAL_PRECIPITATION'],))
+        cur.execute(sql, (row['latitude'], row['longitude'], row['province'], row['station_name'], row['year'],
+                    row['mean_temp'], ))
     db.commit()
 
 
