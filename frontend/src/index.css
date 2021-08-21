@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* transition */
+.transition,
+a {
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+.longerTransition {
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  width: 100%;
+  background-color: #404572;
+  padding: 25px;
+  padding-left: 10px;
+  padding-right: 20px;
+  overflow-x: hidden;
+  z-index: 100;
+}
+.navItems {
+  float: right;
+}
+.navbar a {
+  color: #f1f1f1;
+  font-size: 32px;
+  padding: 20px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: #73cdf3;
+}
+.navIcon {
+  vertical-align: text-bottom;
+  height: 28px;
+  padding-right: 20px;
+  padding-bottom: 4px;
+  filter: brightness(130%);
+}
+/* end navbar */
+/* home page */
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 10vw;
+}
+/* error page */
+.error-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.error-page a,
+.error-page h1 {
+  color: #404572;
+  margin: 0;
+}
+.error-page h1 {
+  font-size: 64px;
+}
+.error-page a {
+  font-size: 32px;
+  text-decoration: none;
+}
+.error-page a:hover {
+  color: #636897;
+}
