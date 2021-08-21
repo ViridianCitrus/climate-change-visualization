@@ -11,6 +11,7 @@ def main():
     CREATE TABLE IF NOT EXISTS CLIMATE_DATA (
         latitude REAL NOT NULL,
         longitude REAL NOT NULL,
+        province TEXT NOT NULL,
         station_name TEXT,
         year INTEGER NOT NULL,
         month INTEGER NOT NuLL,
@@ -27,8 +28,9 @@ def main():
             print(f'{index/rows*100:.1f}% uploaded.', end='\r')
         sql = \
             '''
-            INSERT INTO CLIMATE_DATA (latitude, longitude, station_name, year, month, mean_temp, total_precip)
+            INSERT INTO CLIMATE_DATA (latitude, longitude, province, station_name, year, month, mean_temp, total_precip)
             VALUES (
+                ?,
                 ?,
                 ?,
                 ?,
@@ -38,7 +40,7 @@ def main():
                 ?
             );
             '''
-        cur.execute(sql, (row['LATITUDE'], row['LONGITUDE'], row['STATION_NAME'], row['LOCAL_YEAR'],
+        cur.execute(sql, (row['LATITUDE'], row['LONGITUDE'], row['PROVINCE_CODE'], row['STATION_NAME'], row['LOCAL_YEAR'],
                     row['LOCAL_MONTH'], row['MEAN_TEMPERATURE'], row['TOTAL_PRECIPITATION'],))
     db.commit()
 
