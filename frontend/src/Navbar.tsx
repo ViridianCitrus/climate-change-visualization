@@ -6,7 +6,7 @@ export const Navbar: React.FC = () => {
       <nav className="navbar">
         <a href="/#" title="Home">
           <img alt="website logo" src={"logo.png"} className="navIcon" />
-          Logo + Name
+          Climate Report
         </a>
         <div className="navItems">
           <a title="Home" href="/#">

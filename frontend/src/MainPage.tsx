@@ -13,9 +13,14 @@ export const MainPage: React.FC = () => {
         <div>
           <h1>Climate Report</h1>
           <p>See the change to your world</p>
-          <button style={{ marginRight: "50px", marginTop: "50px" }}>
-            <p>Get Report</p>
-          </button>
+          <a href="/report">
+            <button
+              style={{ marginRight: "50px", marginTop: "50px" }}
+              className="transition"
+            >
+              <p>Get Report</p>
+            </button>
+          </a>
         </div>
       </div>
     </>

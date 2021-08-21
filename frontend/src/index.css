@@ -57,13 +57,40 @@ a {
 }
 /* end navbar */
 /* home page */
-
 .overlay {
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   padding-left: 10vw;
+}
+.overlay div h1,
+.overlay div > p {
+  color: #404572;
+}
+.overlay div h1 {
+  font-size: 64px;
+}
+.overlay div > p {
+  font-size: 36px;
+  margin: 0;
+}
+.overlay div button {
+  background-color: #5d87f3;
+  border: none;
+  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  filter: drop-shadow(8px 8px 4px rgba(17, 17, 17, 0.349));
+}
+.overlay div button:hover {
+  background-color: #3962ca;
+}
+.overlay div button > p {
+  font-size: 20px;
+  margin: 0;
 }
 /* error page */
 .error-page {
