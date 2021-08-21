@@ -13,6 +13,7 @@ def main():
         longitude REAL NOT NULL,
         province TEXT NOT NULL,
         station_name TEXT,
+        station_id TEXT NOT NULL,
         year INTEGER NOT NULL,
         mean_temp REAL
     );
@@ -26,8 +27,9 @@ def main():
             print(f'{index/rows*100:.1f}% uploaded.', end='\r')
         sql = \
             '''
-            INSERT INTO CLIMATE_DATA (latitude, longitude, province, station_name, year, mean_temp)
+            INSERT INTO CLIMATE_DATA (latitude, longitude, province, station_name, station_id, year, mean_temp)
             VALUES (
+                ?,
                 ?,
                 ?,
                 ?,
@@ -38,7 +40,7 @@ def main():
             '''
 
         temp = None if row['mean_temp'] == np.nan else row['mean_temp']
-        cur.execute(sql, (row['latitude'], row['longitude'], row['province'], row['station_name'], row['year'],
+        cur.execute(sql, (row['latitude'], row['longitude'], row['province'], row['station_name'], row['station_id'], row['year'],
                     row['mean_temp'], ))
     db.commit()
 

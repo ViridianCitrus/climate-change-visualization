@@ -25,7 +25,14 @@ def main():
         'province__province': 'province'
 
     })
+    for sid in df['station_id'].unique():
+        if df[df['station_id'] == sid]['mean_temp'].isnull().all():
+            drop = df[df['station_id'] == sid].index
+            df.drop(drop, inplace=True)
+
     df.to_csv('ahccd-annual-cleaned.csv')
+
+
 
 
 if __name__ == '__main__':
