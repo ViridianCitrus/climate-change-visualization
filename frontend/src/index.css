@@ -30,7 +30,7 @@ a {
   top: 0;
   width: 100%;
   background-color: #404572;
-  padding: 25px;
+  padding: 20px;
   padding-left: 10px;
   padding-right: 20px;
   overflow-x: hidden;
@@ -41,7 +41,7 @@ a {
 }
 .navbar a {
   color: #f1f1f1;
-  font-size: 32px;
+  font-size: 28px;
   padding: 20px;
   text-decoration: none;
 }
@@ -124,6 +124,12 @@ a {
   padding-left: 10vw;
   color: white;
   background-color: #404572;
+}
+.why h2 {
+  padding-top: 10vh;
+}
+.why p:last-child {
+  padding-bottom: 10vh;
 }
 .author {
   text-align: right;
