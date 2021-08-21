@@ -63,6 +63,7 @@ a {
   align-items: center;
   padding-left: 10vw;
 }
+
 .overlay div h1,
 .overlay div > p {
   color: #404572;
@@ -140,6 +141,7 @@ a {
 .searchBar {
   margin-top: 100px;
 }
+
 /* error page */
 .error-page {
   height: 100vh;
