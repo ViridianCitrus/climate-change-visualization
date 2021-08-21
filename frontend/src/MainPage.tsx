@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { ReactComponent as FrontPageImage } from "./images/frontpage.svg";
 import { Navbar } from "./Navbar";
-import ccLogo from "./images/globalWarming.svg";
 
 export const MainPage: React.FC = () => {
   useEffect(() => {
@@ -28,9 +27,6 @@ export const MainPage: React.FC = () => {
         </div>
         <div style={{ paddingLeft: "20vw", paddingTop: "15vh" }}>
           <FrontPageImage />
-        </div>
-        <div>
-          <img src={ccLogo} />
         </div>
       </div>
     </>
