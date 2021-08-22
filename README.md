@@ -1,6 +1,6 @@
 # Climate Change Visualization
 
-As our climate change worsens we'll see many changes to our world, but what will it look like where you live? How will it affect your friend from France? This website allows you to explore the effects of climate change around the world in 3D! 
+As our climate change worsens we'll see many changes to our world, but what will it look like where you live? How will it affect your friend from Vancouver? This website allows you to explore the effects of climate change around Canada in 3D! 
 
 
 
