@@ -18,7 +18,7 @@ export const MainPage: React.FC = () => {
           <p style={{ marginTop: "36px" }}>See the change to your world</p>
           <a href="/report">
             <button
-              style={{ marginRight: "50px", marginTop: "50px" }}
+              style={{ marginRight: "50px", marginTop: "40px" }}
               className="transition"
               title="Get Report"
             >
@@ -31,8 +31,8 @@ export const MainPage: React.FC = () => {
         </div>
       </div>
       <div className="about" id="about">
-        <h2 style={{ fontWeight: "normal", fontSize: "36px" }}>About</h2>
-        <p style={{ fontSize: "32px", maxWidth: "960px", lineHeight: 1.4 }}>
+        <h2>About</h2>
+        <p>
           As our <b>climate change</b> worsens we'll see many changes to our
           world, but what will it look like where you live?
           <br />
@@ -42,36 +42,37 @@ export const MainPage: React.FC = () => {
           change around the world in 3D!{" "}
         </p>
       </div>
-      <div className="why">
-        <h2 style={{ fontWeight: "normal", fontSize: "36px", color: "#F1F1F1", paddingTop: "30px" }}>Why?</h2>
-        <p style={{ fontSize: "32px", maxWidth: "960px", paddingTop: "30px", lineHeight: 1.4 , color:"#F1F1F1", fontStyle: "italic"}}>
+      <div className="why" id="why">
+        <h2>Why?</h2>
+        <p>
+          Over the next century, the IPCC predicts a rise in temperature of 1.4
+          to 5.5 degrees Celsius. This is largely due to the increasing
+          greenhouse gases produced by human activities.
+        </p>
+        <p style={{ maxWidth: "820px" }}>
           "We cannot burn our way to the future. We cannot pretend the danger
-          does not exist — or dismiss it because it affects someone else."
+          does not exist - or dismiss it because it affects someone else."
         </p>
-        <p style={{ color:"#F1F1F1"}}>- Ban Ki-moon</p>
-        <p style={{ fontSize: "24px", maxWidth: "960px", lineHeight: 1.4, color: "#F1F1F1" }}>
-          From melting ice caps to large fluctuating temperatures, climate
-          change has wreaked havoc on our environment and taken hold of our
-          world with its observable effects. This is largely due to the
-          increasing greenhouse gases produced by human activities. Over the
-          next century, the Intergovernmental Panel on Climate Change predicts a
-          rise in temperature of 2.5 to 10 degrees Fahrenheit. This leads to the
-          effects of climate change; intense heat waves, shrinking glaciers,
-          ocean acidification, as well as the accelerated rise in sea level. As
-          global warming increases, we inch closer and closer towards “tipping
-          points”, where the damage becomes irreversible. However, switching to
-          greener options and removing greenhouse gases can mitigate the adverse
-          effects of human activities, ultimately keeping climate change under
-          control.
+        <p style={{ maxWidth: "820px" }} className="author">
+          - Ban Ki-moon
         </p>
-        <p style={{ fontSize: "24px", maxWidth: "960px", lineHeight: 1.4, color: "#F1F1F1" }}>
-          As our climate change worsens we'll see many changes to our world, but
-          what will it look like where you live? How will it affect your friend
-          from Saskatchewan? This website allows you to explore the effects of
-          climate change around Canada in 3D! Degrees of Change aims to display the effects
-          of climate change in one simple, user-friendly format. Using the
-          Degrees of Change interface, users can manipulate the map view to explore the
-          level of greenhouse emissions over the years in Canada.
+        <img
+          style={{
+            maxWidth: "900px",
+            paddingTop: "20px",
+            paddingBottom: "20px",
+          }}
+          src={"wildfireCrop.jpg"}
+          alt="wildfire_image"
+        />
+        <p>
+          This leads to the effects of climate change; intense heat waves,
+          shrinking glaciers, ocean acidification, as well as the accelerated
+          rise in sea level. As global warming increases, we inch closer and
+          closer towards “tipping points”, where the damage becomes
+          irreversible. However, switching to greener options and removing
+          greenhouse gases can mitigate the adverse effects of human activities,
+          ultimately keeping climate change under control.
         </p>
       </div>
     </>

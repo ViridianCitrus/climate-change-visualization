@@ -30,7 +30,7 @@ a {
   top: 0;
   width: 100%;
   background-color: #404572;
-  padding: 25px;
+  padding: 20px;
   padding-left: 10px;
   padding-right: 20px;
   overflow-x: hidden;
@@ -41,7 +41,7 @@ a {
 }
 .navbar a {
   color: #f1f1f1;
-  font-size: 32px;
+  font-size: 28px;
   padding: 20px;
   text-decoration: none;
 }
@@ -67,7 +67,7 @@ a {
 
 .overlay div h1,
 .overlay div > p {
-  color: #404572;
+  color: white;
 }
 .overlay div h1 {
   font-size: 64px;
@@ -79,7 +79,7 @@ a {
 .overlay div button {
   background-color: #5d87f3;
   border: none;
-  padding: 30px;
+  padding: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
   color: white;
@@ -135,6 +135,40 @@ a {
   background-color: #404572;
 }
 
+.about h2,
+.why h2 {
+  font-weight: normal;
+  padding-left: 8vw;
+  padding-bottom: 20px;
+  font-size: 36px;
+}
+.about p,
+.why p,
+.why img {
+  font-weight: normal;
+  padding-left: 8vw;
+  max-width: 920px;
+  font-size: 28px;
+}
+.why {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+  color: white;
+  background-color: #404572;
+}
+.why h2 {
+  padding-top: 10vh;
+}
+.why p:last-child {
+  padding-bottom: 10vh;
+}
+.author {
+  text-align: right;
+}
+
 /* report page */
 .reportPage {
   display: flex;
@@ -147,6 +181,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 20;
 }
 .sidebarOpen {
   flex: 0.8;
@@ -188,8 +223,15 @@ a {
 .slider {
   grid-template-columns: 5% 5% 80% 5% 5%;
 }
-.slider > svg {
+.slider svg {
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   z-index: 100;
+}
+.triangleYear:hover {
+  filter: brightness(0.4) !important;
 }
 .rs-slider-graduator span {
   color: white;}

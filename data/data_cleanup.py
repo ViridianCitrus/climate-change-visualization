@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import numpy as np
+import json
 
 def main():
 
@@ -31,7 +32,8 @@ def main():
             df.drop(drop, inplace=True)
 
     df.to_csv('ahccd-annual-cleaned.csv')
-
+    with open('station_id.json', 'w') as fp:
+        json.dump(stationdict, fp, indent=4)
 
 
 
