@@ -43,58 +43,84 @@ def station_return():
     return climate_data
 
 
-@app.route("/api/region/local")
-def local_return():
-    """
-    Returns the climate data of the five closest stations to the selected
-    location
-    """
-    num = 5
-    lat = request.args['lat']
-    lat = float(lat)
-    lon = request.args['lon']
-    lon = float(lon)
-    sel_pos = (lat, lon)
-
+@app.route("/api/stations")
+def all_stations():
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-    data = cur.execute('SELECT * FROM CLIMATE_DATA')
-
-    station_ids = list()
-    count = 0
-    while count <= num:
-        id = 0
-        skipped = False
-        min_dist = float(sys.float_info.max)
-
-        for line in data:
-            if line[4] not in station_ids:
-                skipped = False
-                pos = (line[0], line[1])
-                distance = euclidean_distance(
-                                            pos[0],
-                                            pos[1],
-                                            sel_pos[0],
-                                            sel_pos[1])
-                distance = float(distance)
-
-                if distance < min_dist:
-                    min_dist = distance
-                    id = line[4]
-            else:
-                skipped = True
-
-        if skipped is False:
-            station_ids.append(id)
-        count += 1
-
+    data = cur.execute('SELECT * FROM CLIMATE_DATA;').fetchall()
+    print(data[0])
     cur.close()
-    output_dict = dict()
-    for id in station_ids:
-        data_dict = get_station_data(id)
-        output_dict[id] = data_dict
 
-    return output_dict
+    ans = []
+    for row in data:
+        ans.append({
+            'latitude': row[0],
+            'longitude': row[1],
+            'province': row[2],
+            'station_name': row[3],
+            'id': row[4],
+            'year': row[5],
+            'mean_temp': row[6],
+        })
+    data_dict = dict()
+    data_dict['Data:'] = ans
+    return data_dict
+
+
+# @app.route("/api/region/local")
+# def local_return():
+#     """
+#     Returns the climate data of the five closest stations to the selected
+#     location
+#     """
+#     num = 5
+#     lat = 5
+#     lon = 5
+#     # lat = request.args['lat']
+#     # lat = float(lat)
+#     # lon = request.args['lon']
+#     # lon = float(lon)
+#     sel_pos = (lat, lon)
+
+#     db = sqlite3.connect(DATABASE)
+#     cur = db.cursor()
+#     data = cur.execute('SELECT * FROM CLIMATE_DATA')
+
+#     station_ids = list()
+#     count = 0
+#     while count <= num:
+#         id = 0
+#         skipped = False
+#         min_dist = sys.float_info.max
+
+#         for line in data:
+#             skip_ids = list()
+#             if line[4] not in skip_ids:
+#                 # if count >= 5:
+#                 #     break
+#                 pos = (line[0], line[1])
+#                 distance = euclidean_distance(
+#                                             pos[0],
+#                                             pos[1],
+#                                             sel_pos[0],
+#                                             sel_pos[1])
+#                 # print(distance, type(distance))
+#                 id = line[4]
+#                 if distance < min_dist:
+#                     min_dist = distance
+#                     skip_ids.append(id)
+#                     # count += 1
+#         print(id)
+#         count += 1
+#     cur.close()
+#     output_dict = dict()
+#     for id in station_ids:
+#         print(id)
+#         data_dict = get_station_data(id)
+#         # if type(id) == 'float':
+#         output_dict[id] = data_dict
+
+#     return output_dict
 
 
 if __name__ == '__main__':
