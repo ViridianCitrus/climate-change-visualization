@@ -46,7 +46,7 @@ export const Report: React.FC = () => {
   });
 
   useEffect(() => {
-    document.title = "Climate Report | Report";
+    document.title = "Degrees of Change | Report";
   }, []);
 
   useEffect(() => {
