@@ -6,13 +6,44 @@ import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
 import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
 import { Navbar } from "./Navbar";
 
+import { geoToH3 } from "h3-js";
+import { StaticMap } from "react-map-gl";
+
+//@ts-ignore
+import DeckGL from "@deck.gl/react";
+//@ts-ignore
+import { H3HexagonLayer } from "@deck.gl/geo-layers";
+import tempdata from "./testdata.json";
+
 export const Report: React.FC = () => {
+  const MAPBOX_TOKEN =
+    "pk.eyJ1IjoiYmVuYWRyaWxsIiwiYSI6ImNrc21hajlrbzFqaGoydXBjOWlyOGl5cHIifQ.sTt3_tgmpDlBUOaPW7lTqg";
+
   // const [offsetHeight, setOffsetHeight] = useState(100);
   // const [sidebarOffset, setSidebarOffset] = useState(0);
   const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
   const [sliderValue, setSliderValue] = useState(2020);
+  // const [viewport, setViewport] = useState({
+  //   latitude: 43.6532,
+  //   longitude: -79.3832,
+  //   width: "75vw",
+  //   height: "100vh",
+  //   zoom: 10
+  // })
+  const layer = new H3HexagonLayer({
+    id: "h3-hexagon-layer",
+    data: tempdata,
+    pickable: true,
+    wireframe: false,
+    filled: true,
+    extruded: true,
+    elevationScale: 20,
+    getHexagon: (d: any) => geoToH3(d.latitude, d.longitude, 0),
+    getFillColor: (d: any) => [255, (1 - d.temp / 10) * 255, 0],
+    getElevation: (d: any) => d.temp * 10,
+  });
 
   useEffect(() => {
     document.title = "Climate Report | Report";
@@ -31,6 +62,14 @@ export const Report: React.FC = () => {
     if (sliderValue + 1 < 2050) setSliderValue(sliderValue + 1);
   };
 
+  const INITIAL_VIEW_STATE = {
+    latitude: 43.6532,
+    longitude: -79.3832,
+    zoom: 13,
+    pitch: 0,
+    bearing: 0,
+  };
+
   return (
     <>
       <div>
@@ -39,13 +78,15 @@ export const Report: React.FC = () => {
       <div className="reportPage">
         <div className="searchBar" style={{ flex: 3.5 }}>
           <div style={{ top: `100px`, flex: 1 }}>
-            {/* search bar */}
-            <input
-              type="text"
-              placeholder="City/Place"
-              value={searchField}
-              onChange={(e) => changeSearchField(e.target.value)}
-            />
+            <div style={{ zIndex: 100 }}>
+              {/* search bar */}
+              <input
+                type="text"
+                placeholder="City/Place"
+                value={searchField}
+                onChange={(e) => changeSearchField(e.target.value)}
+              />
+            </div>
           </div>
           {/* timeline */}
           <div
@@ -64,11 +105,13 @@ export const Report: React.FC = () => {
                 backgroundColor: "rgba(0, 0, 0, 0.4)",
                 marginTop: "auto",
                 display: "grid",
+                zIndex: 100,
               }}
             >
               {/* TODO: arrow buttons */}
               <TriangleClose
                 title="Decrease Year"
+                className="triangleYear"
                 style={{
                   marginRight: "20px",
                   filter: "brightness(0) invert(1)",
@@ -103,6 +146,7 @@ export const Report: React.FC = () => {
               <div />
               <TriangleOpen
                 title="Increase Year"
+                className="triangleYear"
                 style={{
                   marginLeft: "20px",
                   filter: "brightness(0) invert(1)",
@@ -163,18 +207,31 @@ export const Report: React.FC = () => {
               </label>
               <br />
               <label title="None">
-                <input
-                  type="radio"
-                  id="none"
-                  name="toggle"
-                  value="none"
-                  checked
-                />{" "}
-                None
+                <input type="radio" id="none" name="toggle" value="none" /> None
               </label>
             </div>
           </div>
         </div>
+      </div>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <DeckGL
+          initialViewState={INITIAL_VIEW_STATE}
+          controller={true}
+          layers={[layer]}
+        >
+          <StaticMap
+            mapboxApiAccessToken={MAPBOX_TOKEN}
+            mapStyle={"mapbox://styles/benadrill/cksmdc7bynkzp17ly78uzonu7"}
+          />
+        </DeckGL>
       </div>
     </>
   );
