@@ -14,11 +14,14 @@ A React-Flask app that allows you to explore climate change around Canada in 3D!
 
 ![demo](img/demo.gif)
 
+![screenshot2](img/screenshot2.png)
+
+![screenshot1](img/screenshot1.png)
+
 
 
 ## 🔨 Tools
 
-* Flask-SQLite (Backend REST API)
 * React-Typescript (Front end)
 
 ### Dependencies
