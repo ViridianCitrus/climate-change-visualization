@@ -27,7 +27,22 @@ export const Report: React.FC = () => {
   const [sliderValue, setSliderValue] = useState(2019);
 
   //@ts-ignore
-  var showndata = tempdata.filter((obj: any) => obj.year === sliderValue);
+  var showndata = tempdata.filter(
+    (obj: any) => obj.year === sliderValue && obj.mean_temp != null
+  );
+
+  const setFillColor = (d: any) => {
+    if (d.mean_temp > 0) {
+      return [255, (1 - d.mean_temp / 10) * 255, 0, 90];
+    } else {
+      return [
+        (1 + d.mean_temp / 10) * 255,
+        (1 + d.mean_temp / 10) * 255,
+        255,
+        90,
+      ];
+    }
+  };
 
   const layer = new H3HexagonLayer({
     id: "h3-hexagon-layer",
@@ -38,7 +53,7 @@ export const Report: React.FC = () => {
     extruded: true,
     elevationScale: 25000,
     getHexagon: (d: any) => geoToH3(d.latitude, d.longitude, 5),
-    getFillColor: (d: any) => [255, (1 - d.mean_temp / 5) * 255, 0],
+    getFillColor: setFillColor,
     getElevation: (d: any) => d.mean_temp,
   });
 
@@ -80,7 +95,7 @@ export const Report: React.FC = () => {
     pitch: 30,
     bearing: 0,
   };
-
+  console.log(showndata);
   return (
     <div style={{ backgroundColor: "#221c33" }}>
       <div>
@@ -237,6 +252,12 @@ export const Report: React.FC = () => {
           initialViewState={INITIAL_VIEW_STATE}
           controller={true}
           layers={[layer]}
+          getTooltip={(o: any) => {
+            return (
+              o.object &&
+              `${o.object.station_name}\nTEMP: ${o.object.mean_temp}`
+            );
+          }}
         >
           <ReactMapGL
             mapboxApiAccessToken={MAPBOX_TOKEN}
