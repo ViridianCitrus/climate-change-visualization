@@ -127,7 +127,6 @@ a {
   min-height: 100vh;
   padding-left: 5vw;
   padding-right: 5vw;
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
