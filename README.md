@@ -12,7 +12,7 @@ A React-Flask app that allows you to explore climate change around Canada in 3D!
 
 ## 📸 Demo/Screenshots
 
-
+![demo](img/demo.gif)
 
 
 
