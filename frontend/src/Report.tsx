@@ -7,42 +7,38 @@ import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
 import { Navbar } from "./Navbar";
 
 import { geoToH3 } from "h3-js";
-import { StaticMap } from "react-map-gl";
+import ReactMapGL from "react-map-gl";
 
 //@ts-ignore
 import DeckGL from "@deck.gl/react";
 //@ts-ignore
 import { H3HexagonLayer } from "@deck.gl/geo-layers";
-import tempdata from "./testdata.json";
+import tempdata from "./tempdata.json";
 
 export const Report: React.FC = () => {
   const MAPBOX_TOKEN =
     "pk.eyJ1IjoiYmVuYWRyaWxsIiwiYSI6ImNrc21hajlrbzFqaGoydXBjOWlyOGl5cHIifQ.sTt3_tgmpDlBUOaPW7lTqg";
 
-  // const [offsetHeight, setOffsetHeight] = useState(100);
-  // const [sidebarOffset, setSidebarOffset] = useState(0);
   const [showType, changeShowType] = useState("None");
   const [searchField, changeSearchField] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
-  const [sliderValue, setSliderValue] = useState(2020);
-  // const [viewport, setViewport] = useState({
-  //   latitude: 43.6532,
-  //   longitude: -79.3832,
-  //   width: "75vw",
-  //   height: "100vh",
-  //   zoom: 10
-  // })
+  const [sliderValue, setSliderValue] = useState(2019);
+
+
+  //@ts-ignore
+  var showndata = tempdata.filter((obj: any) => obj.year === sliderValue)
+
   const layer = new H3HexagonLayer({
     id: "h3-hexagon-layer",
-    data: tempdata,
+    data: showndata,
     pickable: true,
     wireframe: false,
     filled: true,
     extruded: true,
-    elevationScale: 20,
-    getHexagon: (d: any) => geoToH3(d.latitude, d.longitude, 0),
-    getFillColor: (d: any) => [255, (1 - d.temp / 10) * 255, 0],
-    getElevation: (d: any) => d.temp * 10,
+    elevationScale: 25000,
+    getHexagon: (d: any) => geoToH3(d.latitude, d.longitude, 5),
+    getFillColor: (d: any) => [255, (1 - d.mean_temp / 5) * 255, 0],
+    getElevation: (d: any) => d.mean_temp,
   });
 
   useEffect(() => {
@@ -59,18 +55,18 @@ export const Report: React.FC = () => {
 
   const decrease = () => {
     // check bounds
-    if (sliderValue - 1 > 1950) setSliderValue(sliderValue - 1);
+    if (sliderValue - 1 > 1900) setSliderValue(sliderValue - 1);
   };
   const increase = () => {
     // check bounds
-    if (sliderValue + 1 < 2050) setSliderValue(sliderValue + 1);
+    if (sliderValue + 1 < 2019) setSliderValue(sliderValue + 1);
   };
 
   const INITIAL_VIEW_STATE = {
     latitude: 43.6532,
     longitude: -79.3832,
-    zoom: 13,
-    pitch: 0,
+    zoom: 5,
+    pitch: 30,
     bearing: 0,
   };
 
@@ -119,15 +115,15 @@ export const Report: React.FC = () => {
                   step={1}
                   graduated
                   progress
-                  min={1950}
-                  max={2050}
+                  min={1900}
+                  max={2019}
                   value={sliderValue}
                   onChange={(e) => {
                     setSliderValue(e);
                   }}
                   renderMark={(mark) => {
                     const times = [];
-                    for (let i = 1950; i < 2051; i += 10) {
+                    for (let i = 1900; i < 2051; i += 10) {
                       times.push(i);
                     }
                     if (times.includes(mark)) {
@@ -237,7 +233,7 @@ export const Report: React.FC = () => {
           controller={true}
           layers={[layer]}
         >
-          <StaticMap
+          <ReactMapGL
             mapboxApiAccessToken={MAPBOX_TOKEN}
             mapStyle={"mapbox://styles/benadrill/cksmdc7bynkzp17ly78uzonu7"}
           />
