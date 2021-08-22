@@ -4,7 +4,7 @@ As our climate change worsens we'll see many changes to our world, but what will
 
 
 
-## About
+## ✨ About
 
 A React app that allows you to explore climate change around Canada in 3D! Users can manipulate the map interface to visualize the effects of climate change in one simple, user-friendly format!
 
