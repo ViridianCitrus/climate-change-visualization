@@ -182,6 +182,7 @@ export const Report: React.FC = () => {
                 title="Close Options"
                 style={{
                   marginRight: "20px",
+                  marginLeft: "20px",
                 }}
                 onClick={() => toggleToggleSidebar(!toggleSidebar)}
               />
