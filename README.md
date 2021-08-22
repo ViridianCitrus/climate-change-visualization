@@ -1,4 +1,4 @@
-# Climate Change Visualization
+# Degrees of Change
 
 As our climate change worsens we'll see many changes to our world, but what will it look like where you live? How will it affect your friend from Vancouver? This website allows you to explore the effects of climate change around Canada in 3D! 
 
@@ -6,7 +6,7 @@ As our climate change worsens we'll see many changes to our world, but what will
 
 ## ✨ About
 
-A React app that allows you to explore climate change around Canada in 3D! Users can manipulate the map interface to visualize the effects of climate change in one simple, user-friendly format!
+A React app that allows you to explore climate change around Canada in 3D! Users can manipulate the map interface to visualize the effects of climate change in one simple, user-friendly format! Check out the [devpost here](https://devpost.com/software/degrees-of-change)!
 
 
 
