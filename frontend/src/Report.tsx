@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Slider } from "rsuite";
+import { Slider, Input, InputGroup, Icon } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
@@ -53,6 +53,10 @@ export const Report: React.FC = () => {
     // TODO: get the right data type to display
   }, [showType]);
 
+  const search = (e: string) => {
+    changeSearchField(e);
+  };
+
   const decrease = () => {
     // check bounds
     if (sliderValue - 1 > 1950) setSliderValue(sliderValue - 1);
@@ -71,23 +75,13 @@ export const Report: React.FC = () => {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#221c33" }}>
       <div>
         <Navbar />
       </div>
       <div className="reportPage">
         <div className="searchBar" style={{ flex: 3.5 }}>
-          <div style={{ top: `100px`, flex: 1 }}>
-            <div style={{ zIndex: 100 }}>
-              {/* search bar */}
-              <input
-                type="text"
-                placeholder="City/Place"
-                value={searchField}
-                onChange={(e) => changeSearchField(e.target.value)}
-              />
-            </div>
-          </div>
+          <div style={{ top: `100px`, flex: 1 }}></div>
           {/* timeline */}
           <div
             style={{
@@ -179,36 +173,52 @@ export const Report: React.FC = () => {
           </div>
           <div
             className="sidebarToggle"
-            style={{ display: toggleSidebar ? "initial" : "none" }}
+            style={{ display: toggleSidebar ? "flex" : "none" }}
           >
-            <h2>Toggles</h2>
-            <div
-              className="toggleRadio"
-              onChange={(e: any) => changeShowType(e.target.value)}
-            >
-              <label title="Temperature">
-                <input
-                  type="radio"
-                  id="temperature"
-                  name="toggle"
-                  value="temperature"
-                />{" "}
-                Temperature
-              </label>
-              <br />
-              <label title="Precipitation">
-                <input
-                  type="radio"
-                  id="precipitation"
-                  name="toggle"
-                  value="precipitation"
-                />{" "}
-                Precipitation
-              </label>
-              <br />
-              <label title="None">
-                <input type="radio" id="none" name="toggle" value="none" /> None
-              </label>
+            <div style={{ width: "80%", flex: 1, paddingTop: "100px" }}>
+              <InputGroup>
+                <Input
+                  value={searchField}
+                  onChange={(e) => search(e)}
+                  type="string"
+                  placeholder="City/Place"
+                />
+                <InputGroup.Button>
+                  <Icon icon="search" />
+                </InputGroup.Button>
+              </InputGroup>
+            </div>
+            <div style={{ flex: 1 }}>
+              <h2>Toggles</h2>
+              <div
+                className="toggleRadio"
+                onChange={(e: any) => changeShowType(e.target.value)}
+              >
+                <label title="Temperature">
+                  <input
+                    type="radio"
+                    id="temperature"
+                    name="toggle"
+                    value="temperature"
+                  />{" "}
+                  Temperature
+                </label>
+                <br />
+                <label title="Precipitation">
+                  <input
+                    type="radio"
+                    id="precipitation"
+                    name="toggle"
+                    value="precipitation"
+                  />{" "}
+                  Precipitation
+                </label>
+                <br />
+                <label title="None">
+                  <input type="radio" id="none" name="toggle" value="none" />{" "}
+                  None
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -233,6 +243,6 @@ export const Report: React.FC = () => {
           />
         </DeckGL>
       </div>
-    </>
+    </div>
   );
 };
