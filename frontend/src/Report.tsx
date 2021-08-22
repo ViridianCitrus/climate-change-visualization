@@ -7,6 +7,7 @@ import { ReactComponent as TriangleClose } from "./images/triangleClose.svg";
 import { Navbar } from "./Navbar";
 
 import { geoToH3 } from "h3-js";
+//@ts-ignore
 import ReactMapGL from "react-map-gl";
 
 //@ts-ignore
