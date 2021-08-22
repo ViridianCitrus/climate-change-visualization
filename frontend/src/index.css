@@ -62,7 +62,7 @@ a {
   display: flex;
   align-items: center;
   padding-left: 10vw;
-  background-color: #a4a6bc;
+  background-color: #A4A6BC;
 }
 
 .overlay div h1,
@@ -74,6 +74,7 @@ a {
 }
 .overlay div > p {
   font-size: 36px;
+  margin: 0;
 }
 .overlay div button {
   background-color: #5d87f3;
@@ -93,15 +94,47 @@ a {
   font-size: 20px;
   margin: 0;
 }
-/* about */
+
+/* about section */
 .about {
   min-height: 100vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 10vw;
-  color: #404572;
 }
+
+.about div h1,
+.about div > p {
+  color: #404572;
+  padding-top: 30px;
+}
+
+.about div > h1 {
+  font-size: 42px;
+}
+
+.about div > p {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* why section */
+.why {
+  min-height: 100vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+  background-color: #404572;
+}
+
 .about h2,
 .why h2 {
   font-weight: normal;
@@ -135,6 +168,7 @@ a {
 .author {
   text-align: right;
 }
+
 /* report page */
 .reportPage {
   display: flex;
@@ -156,6 +190,7 @@ a {
   flex: 0.2;
 }
 .sidebar svg {
+  padding-right: 20px;
   transition: 0.2s;
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s;
@@ -199,8 +234,7 @@ a {
   filter: brightness(0.4) !important;
 }
 .rs-slider-graduator span {
-  color: white;
-}
+  color: white;}
 
 /* error page */
 .error-page {
