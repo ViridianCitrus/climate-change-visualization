@@ -79,7 +79,7 @@ export const Report: React.FC = () => {
     pitch: 30,
     bearing: 0,
   };
-  console.log(showndata)
+
   return (
     <div style={{ backgroundColor: "#221c33" }}>
       <div>
