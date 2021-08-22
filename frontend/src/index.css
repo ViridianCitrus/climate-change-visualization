@@ -190,7 +190,6 @@ a {
   flex: 0.2;
 }
 .sidebar svg {
-  padding-right: 20px;
   transition: 0.2s;
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s;
