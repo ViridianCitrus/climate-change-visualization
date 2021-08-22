@@ -65,7 +65,7 @@ def local_return():
     while count <= num:
         id = 0
         skipped = False
-        min_dist = sys.float_info.max
+        min_dist = float(sys.float_info.max)
 
         for line in data:
             if line[4] not in station_ids:
@@ -76,6 +76,7 @@ def local_return():
                                             pos[1],
                                             sel_pos[0],
                                             sel_pos[1])
+                distance = float(distance)
 
                 if distance < min_dist:
                     min_dist = distance
