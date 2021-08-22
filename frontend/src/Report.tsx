@@ -69,6 +69,7 @@ export const Report: React.FC = () => {
               {/* TODO: arrow buttons */}
               <TriangleClose
                 title="Decrease Year"
+                className="triangleYear"
                 style={{
                   marginRight: "20px",
                   filter: "brightness(0) invert(1)",
@@ -103,6 +104,7 @@ export const Report: React.FC = () => {
               <div />
               <TriangleOpen
                 title="Increase Year"
+                className="triangleYear"
                 style={{
                   marginLeft: "20px",
                   filter: "brightness(0) invert(1)",
@@ -163,14 +165,7 @@ export const Report: React.FC = () => {
               </label>
               <br />
               <label title="None">
-                <input
-                  type="radio"
-                  id="none"
-                  name="toggle"
-                  value="none"
-                  checked
-                />{" "}
-                None
+                <input type="radio" id="none" name="toggle" value="none" /> None
               </label>
             </div>
           </div>

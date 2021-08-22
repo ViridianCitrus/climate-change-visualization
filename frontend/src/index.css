@@ -110,7 +110,8 @@ a {
   font-size: 36px;
 }
 .about p,
-.why p {
+.why p,
+.why img {
   font-weight: normal;
   padding-left: 8vw;
   max-width: 920px;
@@ -186,8 +187,15 @@ a {
 .slider {
   grid-template-columns: 5% 5% 80% 5% 5%;
 }
-.slider > svg {
+.slider svg {
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   z-index: 100;
+}
+.triangleYear:hover {
+  filter: brightness(0.4) !important;
 }
 .rs-slider-graduator span {
   color: white;
