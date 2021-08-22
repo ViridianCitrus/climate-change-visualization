@@ -22,7 +22,12 @@ export const Report: React.FC = () => {
   // const [offsetHeight, setOffsetHeight] = useState(100);
   // const [sidebarOffset, setSidebarOffset] = useState(0);
   const [showType, changeShowType] = useState("None");
+  const [searchResult, changeSearchResult] = useState([
+    "asdfdfadsfasfasdf",
+    "asdf",
+  ]);
   const [searchField, changeSearchField] = useState("");
+  const [currentCity, changeCurrentCity] = useState("");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
   const [sliderValue, setSliderValue] = useState(2020);
   // const [viewport, setViewport] = useState({
@@ -47,14 +52,22 @@ export const Report: React.FC = () => {
 
   useEffect(() => {
     document.title = "Degrees of Change | Report";
+    // get from json
+    fetch("./station_id.json").then((data) =>
+      console.log(JSON.stringify(data))
+    );
   }, []);
 
   useEffect(() => {
     // TODO: get the right data type to display
   }, [showType]);
+  useEffect(() => {
+    // goto city
+  }, [currentCity]);
 
   const search = (e: string) => {
     changeSearchField(e);
+    // check with filter
   };
 
   const decrease = () => {
@@ -175,7 +188,10 @@ export const Report: React.FC = () => {
             className="sidebarToggle"
             style={{ display: toggleSidebar ? "flex" : "none" }}
           >
-            <div style={{ width: "80%", flex: 1, paddingTop: "100px" }}>
+            <div
+              style={{ width: "80%", flex: 1, paddingTop: "100px" }}
+              className="searchBarEnd"
+            >
               <InputGroup>
                 <Input
                   value={searchField}
@@ -187,6 +203,20 @@ export const Report: React.FC = () => {
                   <Icon icon="search" />
                 </InputGroup.Button>
               </InputGroup>
+              {searchField
+                ? searchResult.map((res) => {
+                    return (
+                      <p
+                        onClick={() => {
+                          changeCurrentCity(res);
+                          changeSearchField("");
+                        }}
+                      >
+                        {res}
+                      </p>
+                    );
+                  })
+                : null}
             </div>
             <div style={{ flex: 1 }}>
               <h2>Toggles</h2>

@@ -240,6 +240,17 @@ a {
   justify-content: center;
   flex-direction: column;
 }
+.searchBarEnd p {
+  border: 1px solid #8b8b8b;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+  border-radius: 5px;
+}
+.searchBarEnd p:hover {
+  background-color: rgb(228, 228, 228);
+}
 
 /* error page */
 .error-page {
