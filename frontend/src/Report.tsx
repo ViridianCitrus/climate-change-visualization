@@ -26,6 +26,10 @@ export const Report: React.FC = () => {
   const [fill, toggleFill] = useState(true);
   const [sliderValue, setSliderValue] = useState(2019);
 
+  // disable right click for map
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+  });
   //@ts-ignore
   var showndata = tempdata.filter(
     (obj: any) => obj.year === sliderValue && obj.mean_temp != null
@@ -200,7 +204,7 @@ export const Report: React.FC = () => {
               style={{ width: "80%", flex: 1, paddingTop: "100px" }}
               className="searchBarEnd"
             >
-              <p>This is a display of temperature across Canada over time</p>
+              <p>This is a display of average temperature across different Canadadian weather stations over time.</p>
             </div>
             <div style={{ flex: 1 }}>
               <h2>Toggles</h2>
