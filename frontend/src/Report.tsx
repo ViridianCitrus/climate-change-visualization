@@ -47,6 +47,7 @@ export const Report: React.FC = () => {
               onChange={(e) => changeSearchField(e.target.value)}
             />
           </div>
+          
           {/* timeline */}
           <div
             style={{

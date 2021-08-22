@@ -41,12 +41,15 @@ export const MainPage: React.FC = () => {
           <br /> This website allows you to explore the effects of climate
           change around the world in 3D!{" "}
         </p>
-        <p>
+      </div>
+      <div className="why">
+        <h2 style={{ fontWeight: "normal", fontSize: "36px", color: "#F1F1F1", paddingTop: "30px" }}>Why?</h2>
+        <p style={{ fontSize: "32px", maxWidth: "960px", paddingTop: "30px", lineHeight: 1.4 , color:"#F1F1F1", fontStyle: "italic"}}>
           "We cannot burn our way to the future. We cannot pretend the danger
           does not exist — or dismiss it because it affects someone else."
         </p>
-        <p className="author">- Ban Ki-moon</p>
-        <p>
+        <p style={{ color:"#F1F1F1"}}>- Ban Ki-moon</p>
+        <p style={{ fontSize: "24px", maxWidth: "960px", lineHeight: 1.4, color: "#F1F1F1" }}>
           From melting ice caps to large fluctuating temperatures, climate
           change has wreaked havoc on our environment and taken hold of our
           world with its observable effects. This is largely due to the
@@ -61,13 +64,13 @@ export const MainPage: React.FC = () => {
           effects of human activities, ultimately keeping climate change under
           control.
         </p>
-        <p>
+        <p style={{ fontSize: "24px", maxWidth: "960px", lineHeight: 1.4, color: "#F1F1F1" }}>
           As our climate change worsens we'll see many changes to our world, but
           what will it look like where you live? How will it affect your friend
           from Saskatchewan? This website allows you to explore the effects of
-          climate change around Canada in 3D! [NAME] aims to display the effects
+          climate change around Canada in 3D! Degrees of Change aims to display the effects
           of climate change in one simple, user-friendly format. Using the
-          [NAME] interface, users can manipulate the map view to explore the
+          Degrees of Change interface, users can manipulate the map view to explore the
           level of greenhouse emissions over the years in Canada.
         </p>
       </div>
