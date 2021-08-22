@@ -86,7 +86,7 @@ def local_return():
 
         if skipped is False:
             station_ids.append(id)
-            count += 1
+        count += 1
 
     cur.close()
     output_dict = dict()
