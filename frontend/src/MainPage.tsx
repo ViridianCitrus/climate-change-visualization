@@ -39,7 +39,7 @@ export const MainPage: React.FC = () => {
           <br /> How will it affect your friend from Vancouver?
           <br />
           <br /> This website allows you to explore the effects of climate
-          change around the world in 3D!{" "}
+          change around the Canada in 3D!{" "}
         </p>
       </div>
       <div className="why" id="why">
