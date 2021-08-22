@@ -51,7 +51,9 @@ def local_return():
     """
     num = 5
     lat = request.args['lat']
+    lat = float(lat)
     lon = request.args['lon']
+    lon = float(lon)
     sel_pos = (lat, lon)
 
     db = sqlite3.connect(DATABASE)
