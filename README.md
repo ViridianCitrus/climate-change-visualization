@@ -32,6 +32,8 @@ A React app that allows you to explore climate change around Canada in 3D! Users
 * react-map-gl
 * deck.gl
 
+Dataset provided by the [Government of Canada](https://climate-change.canada.ca/climate-data/#/adjusted-station-data)
+
 
 
 ## 👨‍👦‍👦 Team
