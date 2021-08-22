@@ -208,6 +208,9 @@ export const Report: React.FC = () => {
               <p style={{ fontSize: "20px" }}>
                 This is a display of average temperature across different
                 Canadian weather stations over time.
+                <hr style={{ margin: "5px" }} />
+                Right click to pivot and left click to pan the camera. Scroll to
+                zoom.
               </p>
             </div>
             <div style={{ flex: 1 }}>
