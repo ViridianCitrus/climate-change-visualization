@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Slider, Input, InputGroup, Icon } from "rsuite";
+import { Slider } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
 import { ReactComponent as TriangleOpen } from "./images/triangleOpen.svg";
@@ -20,30 +20,36 @@ export const Report: React.FC = () => {
   const MAPBOX_TOKEN =
     "pk.eyJ1IjoiYmVuYWRyaWxsIiwiYSI6ImNrc21hajlrbzFqaGoydXBjOWlyOGl5cHIifQ.sTt3_tgmpDlBUOaPW7lTqg";
 
-  const [showType, changeShowType] = useState("None");
-  const [searchField, changeSearchField] = useState("");
+  const [showType, changeShowType] = useState("normal");
   const [toggleSidebar, toggleToggleSidebar] = useState(true);
+  const [wireframe, toggleWireframe] = useState(true);
+  const [fill, toggleFill] = useState(true);
   const [sliderValue, setSliderValue] = useState(2019);
 
-
   //@ts-ignore
-  var showndata = tempdata.filter((obj: any) => obj.year === sliderValue&&obj.mean_temp != null)
-
+  var showndata = tempdata.filter(
+    (obj: any) => obj.year === sliderValue && obj.mean_temp != null
+  );
 
   const setFillColor = (d: any) => {
     if (d.mean_temp > 0) {
-      return [255, (1 - d.mean_temp / 10) * 255, 0, 90]
+      return [255, (1 - d.mean_temp / 10) * 255, 0, 90];
     } else {
-      return [(1 + d.mean_temp / 10) * 255, (1 + d.mean_temp / 10) * 255, 255, 90]
+      return [
+        (1 + d.mean_temp / 10) * 255,
+        (1 + d.mean_temp / 10) * 255,
+        255,
+        90,
+      ];
     }
-  }
+  };
 
   const layer = new H3HexagonLayer({
     id: "h3-hexagon-layer",
     data: showndata,
     pickable: true,
-    wireframe: false,
-    filled: true,
+    wireframe: wireframe,
+    filled: fill,
     extruded: true,
     elevationScale: 25000,
     getHexagon: (d: any) => geoToH3(d.latitude, d.longitude, 5),
@@ -53,15 +59,25 @@ export const Report: React.FC = () => {
 
   useEffect(() => {
     document.title = "Degrees of Change | Report";
+    // get from json
+    fetch("./station_id.json").then((data) =>
+      console.log(JSON.stringify(data))
+    );
   }, []);
 
   useEffect(() => {
     // TODO: get the right data type to display
+    if (showType === "none") {
+      toggleWireframe(false);
+      toggleFill(false);
+    } else if (showType === "wireframe") {
+      toggleWireframe(true);
+      toggleFill(false);
+    } else {
+      toggleWireframe(false);
+      toggleFill(true);
+    }
   }, [showType]);
-
-  const search = (e: string) => {
-    changeSearchField(e);
-  };
 
   const decrease = () => {
     // check bounds
@@ -79,7 +95,6 @@ export const Report: React.FC = () => {
     pitch: 30,
     bearing: 0,
   };
-
   return (
     <div style={{ backgroundColor: "#221c33" }}>
       <div>
@@ -181,18 +196,11 @@ export const Report: React.FC = () => {
             className="sidebarToggle"
             style={{ display: toggleSidebar ? "flex" : "none" }}
           >
-            <div style={{ width: "80%", flex: 1, paddingTop: "100px" }}>
-              <InputGroup>
-                <Input
-                  value={searchField}
-                  onChange={(e) => search(e)}
-                  type="string"
-                  placeholder="City/Place"
-                />
-                <InputGroup.Button>
-                  <Icon icon="search" />
-                </InputGroup.Button>
-              </InputGroup>
+            <div
+              style={{ width: "80%", flex: 1, paddingTop: "100px" }}
+              className="searchBarEnd"
+            >
+              <p>This is a display of temperature across Canada over time</p>
             </div>
             <div style={{ flex: 1 }}>
               <h2>Toggles</h2>
@@ -200,24 +208,25 @@ export const Report: React.FC = () => {
                 className="toggleRadio"
                 onChange={(e: any) => changeShowType(e.target.value)}
               >
-                <label title="Temperature">
+                <label title="Normal">
                   <input
                     type="radio"
-                    id="temperature"
+                    id="normal"
                     name="toggle"
-                    value="temperature"
+                    value="normal"
+                    checked={showType === "normal"}
                   />{" "}
-                  Temperature
+                  Normal
                 </label>
                 <br />
-                <label title="Precipitation">
+                <label title="Wireframe">
                   <input
                     type="radio"
-                    id="precipitation"
+                    id="wireframe"
                     name="toggle"
-                    value="precipitation"
+                    value="wireframe"
                   />{" "}
-                  Precipitation
+                  Wireframe
                 </label>
                 <br />
                 <label title="None">
@@ -242,7 +251,12 @@ export const Report: React.FC = () => {
           initialViewState={INITIAL_VIEW_STATE}
           controller={true}
           layers={[layer]}
-          getTooltip={(o: any) => {return o.object && `${o.object.station_name}\nTEMP: ${o.object.mean_temp}` }}
+          getTooltip={(o: any) => {
+            return (
+              o.object &&
+              `${o.object.station_name}\nTEMP: ${o.object.mean_temp}`
+            );
+          }}
         >
           <ReactMapGL
             mapboxApiAccessToken={MAPBOX_TOKEN}
