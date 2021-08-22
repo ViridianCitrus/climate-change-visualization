@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "temp": 5,
+        "latitude": 43.6532,
+        "longitude": -79.3832
+    },
+    {
+        "id": 2,
+        "temp": 1,
+        "latitude": 43.6426,
+        "longitude": -79.3871
+    }
+]
