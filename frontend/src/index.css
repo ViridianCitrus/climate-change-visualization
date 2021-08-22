@@ -62,7 +62,7 @@ a {
   display: flex;
   align-items: center;
   padding-left: 10vw;
-  background-color: #A4A6BC;
+  background-color: #a4a6bc;
 }
 
 .overlay div h1,
@@ -70,7 +70,7 @@ a {
   color: white;
 }
 .overlay div h1 {
-  font-size: 64px;
+  font-size: 60px;
 }
 .overlay div > p {
   font-size: 36px;
@@ -181,7 +181,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
+  z-index: 10;
 }
 .sidebarOpen {
   flex: 0.8;
@@ -190,7 +190,6 @@ a {
   flex: 0.2;
 }
 .sidebar svg {
-  padding-right: 20px;
   transition: 0.2s;
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s;
@@ -234,7 +233,13 @@ a {
   filter: brightness(0.4) !important;
 }
 .rs-slider-graduator span {
-  color: white;}
+  color: white;
+}
+.sidebarToggle {
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
 
 /* error page */
 .error-page {

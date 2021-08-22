@@ -4,7 +4,7 @@ import { ReactComponent as GraphicNotFound } from "./images/notFound.svg";
 
 export const PageNotFound: React.FC = () => {
   useEffect(() => {
-    document.title = "Climate Report | 404";
+    document.title = "Degrees of Change | 404";
   }, []);
 
   return (

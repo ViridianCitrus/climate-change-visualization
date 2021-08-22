@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 
 export const MainPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Climate Report | Home";
+    document.title = "Degrees of Change | Home";
   }, []);
 
   return (
@@ -13,7 +13,7 @@ export const MainPage: React.FC = () => {
       <Navbar />
       <div className="home overlay">
         <div>
-          <h1>Climate Report</h1>
+          <h1>Degrees of Change</h1>
 
           <p style={{ marginTop: "36px" }}>See the change to your world</p>
           <a href="/report">
